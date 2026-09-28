@@ -1,14 +1,18 @@
-# 행사 최종 인포 편집기
+# 행사 최종 인포 편집기 v3
 
-`index.html`을 브라우저에서 열면 바로 사용할 수 있습니다.
+## 기능
+- 신간 2종 + 구간 2종
+- 굿즈 자유 추가 / 삭제
+- 표지 및 굿즈 이미지 교체
+- 텍스트 직접 수정
+- 선택한 텍스트의 폰트 / 볼드 / 기울기 / 색상 변경
+- 파스텔 단색 배경 18종
+- 사용자 지정 배경색
+- 직접 배경 이미지 업로드
+- 배경 이미지 맞춤 / 위치 설정
+- SNS 영역 삭제
+- PNG 저장
 
-- 글자를 클릭해 직접 수정
-- 각 회색 이미지 영역을 클릭해 표지/굿즈 이미지 삽입
-- 상단 `PNG로 저장` 버튼으로 최종 이미지 출력
-- 구성: 신간 2종 + 구간(OLD) 2종 + 굿즈존 4종
-
-## GitHub Pages
-1. 새 GitHub 저장소 생성
-2. 이 폴더의 `index.html`, `style.css`, `script.js` 업로드
-3. Settings → Pages → Deploy from a branch
-4. Branch를 `main` / `(root)`로 지정 후 Save
+## GitHub Pages 업데이트
+기존 저장소의 `index.html`, `style.css`, `script.js`를 이 파일들로 교체하고 Commit changes를 누르세요.
+Pages 설정이 `main / (root)`라면 다시 설정할 필요 없이 자동으로 반영됩니다.

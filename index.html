@@ -1,57 +1,164 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>행사 최종 인포 편집기</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="toolbar">
-  <strong>EVENT INFO EDITOR</strong>
-  <span>텍스트를 클릭하면 바로 수정됩니다.</span>
-  <button id="saveBtn">PNG로 저장</button>
-</div>
+<header class="toolbar">
+  <div class="brand">EVENT INFO EDITOR</div>
+
+  <div class="toolGroup">
+    <span>문자</span>
+    <select id="fontFamily">
+      <option value='"Noto Sans KR",sans-serif'>Noto Sans KR</option>
+      <option value='"Malgun Gothic",sans-serif'>맑은 고딕</option>
+      <option value='"Nanum Gothic",sans-serif'>나눔고딕</option>
+      <option value='"Nanum Myeongjo",serif'>나눔명조</option>
+      <option value='"Gowun Dodum",sans-serif'>고운돋움</option>
+      <option value='"Gowun Batang",serif'>고운바탕</option>
+      <option value='"Gaegu",cursive'>개구</option>
+      <option value='"Jua",sans-serif'>주아</option>
+    </select>
+    <button id="boldBtn"><b>B</b></button>
+    <button id="italicBtn"><i>I</i></button>
+    <label class="colorButton">A <input type="color" id="textColor" value="#273142"></label>
+  </div>
+
+  <button id="backgroundBtn">배경 설정</button>
+  <button id="saveBtn" class="primary">PNG 저장</button>
+</header>
+
+<div class="backdrop" id="backdrop"></div>
+<aside class="bgPanel" id="bgPanel">
+  <div class="panelHead">
+    <div>
+      <b>배경 설정</b>
+      <small>단색 또는 내 이미지</small>
+    </div>
+    <button id="closeBg">×</button>
+  </div>
+
+  <h3>파스텔 단색</h3>
+  <div class="swatches" id="swatches"></div>
+
+  <h3>직접 색상 선택</h3>
+  <div class="customColor">
+    <input type="color" id="customBgColor" value="#ffffff">
+    <button id="applyCustomColor">적용</button>
+  </div>
+
+  <h3>배경 이미지</h3>
+  <label class="bgUpload">
+    <input type="file" id="bgImageInput" accept="image/png,image/jpeg,image/webp">
+    <b>＋ 이미지 업로드</b>
+    <span>PNG / JPG / WEBP</span>
+  </label>
+  <div class="bgControls">
+    <label>맞춤
+      <select id="bgSize">
+        <option value="cover">화면 채우기</option>
+        <option value="contain">전체 이미지 보기</option>
+        <option value="auto">원본 크기</option>
+      </select>
+    </label>
+    <label>위치
+      <select id="bgPosition">
+        <option value="center">가운데</option>
+        <option value="top">위</option>
+        <option value="bottom">아래</option>
+        <option value="left">왼쪽</option>
+        <option value="right">오른쪽</option>
+      </select>
+    </label>
+  </div>
+  <button id="removeBgImage" class="wide">배경 이미지 제거</button>
+</aside>
+
 <main id="poster">
   <header class="hero">
-    <div class="eyebrow" contenteditable="true">EVENT INFORMATION · COMIC / GOODS</div>
+    <div class="eyebrow editable" contenteditable="true">EVENT INFORMATION · COMIC / GOODS</div>
     <div class="heroRow">
-      <div><h1 contenteditable="true">OJIKOUN</h1><p contenteditable="true">FINAL INFORMATION</p></div>
-      <div class="event" contenteditable="true">2026 · SEOUL EVENT<br>BOOTH A12</div>
+      <div>
+        <h1 class="editable" contenteditable="true">OJIKOUN</h1>
+        <p class="editable" contenteditable="true">FINAL INFORMATION</p>
+      </div>
+      <div class="event editable" contenteditable="true">2026 · EVENT<br>BOOTH A12</div>
     </div>
   </header>
 
   <section class="books">
     <div class="group new">
-      <div class="sectionTitle"><b>NEW</b><span>신간 2종</span></div>
+      <div class="sectionTitle"><b class="editable" contenteditable="true">NEW</b><span class="editable" contenteditable="true">신간 2종</span></div>
       <div class="cards">
-        <article class="bookCard"><label class="cover"><input type="file" accept="image/*"><span>표지 이미지<br>클릭해서 변경</span><img></label><h3 contenteditable="true">신간 제목 01</h3><p contenteditable="true">B5 · 00P · 전연령</p><strong contenteditable="true">10,000원</strong><small contenteditable="true">간단한 책 설명을 입력하세요.</small></article>
-        <article class="bookCard"><label class="cover"><input type="file" accept="image/*"><span>표지 이미지<br>클릭해서 변경</span><img></label><h3 contenteditable="true">신간 제목 02</h3><p contenteditable="true">A5 · 00P · R18</p><strong contenteditable="true">12,000원</strong><small contenteditable="true">간단한 책 설명을 입력하세요.</small></article>
+        <article class="bookCard">
+          <label class="cover"><input type="file" accept="image/*"><span>표지 이미지<br>클릭해서 변경</span><img alt=""></label>
+          <h3 class="editable" contenteditable="true">신간 제목 01</h3>
+          <p class="editable" contenteditable="true">B5 · 00P · 전연령</p>
+          <strong class="editable" contenteditable="true">10,000원</strong>
+          <small class="editable" contenteditable="true">간단한 책 설명을 입력하세요.</small>
+        </article>
+        <article class="bookCard">
+          <label class="cover"><input type="file" accept="image/*"><span>표지 이미지<br>클릭해서 변경</span><img alt=""></label>
+          <h3 class="editable" contenteditable="true">신간 제목 02</h3>
+          <p class="editable" contenteditable="true">A5 · 00P · R18</p>
+          <strong class="editable" contenteditable="true">12,000원</strong>
+          <small class="editable" contenteditable="true">간단한 책 설명을 입력하세요.</small>
+        </article>
       </div>
     </div>
+
     <div class="group old">
-      <div class="sectionTitle"><b>OLD</b><span>구간 2종</span></div>
+      <div class="sectionTitle"><b class="editable" contenteditable="true">OLD</b><span class="editable" contenteditable="true">구간 2종</span></div>
       <div class="cards">
-        <article class="bookCard"><label class="cover"><input type="file" accept="image/*"><span>표지 이미지<br>클릭해서 변경</span><img></label><h3 contenteditable="true">구간 제목 01</h3><p contenteditable="true">B5 · 00P · 전연령</p><strong contenteditable="true">8,000원</strong><small contenteditable="true">재고 소량 / 행사 판매</small></article>
-        <article class="bookCard"><label class="cover"><input type="file" accept="image/*"><span>표지 이미지<br>클릭해서 변경</span><img></label><h3 contenteditable="true">구간 제목 02</h3><p contenteditable="true">A5 · 00P · R18</p><strong contenteditable="true">10,000원</strong><small contenteditable="true">재고 소량 / 행사 판매</small></article>
+        <article class="bookCard">
+          <label class="cover"><input type="file" accept="image/*"><span>표지 이미지<br>클릭해서 변경</span><img alt=""></label>
+          <h3 class="editable" contenteditable="true">구간 제목 01</h3>
+          <p class="editable" contenteditable="true">B5 · 00P · 전연령</p>
+          <strong class="editable" contenteditable="true">8,000원</strong>
+          <small class="editable" contenteditable="true">재고 소량 / 행사 판매</small>
+        </article>
+        <article class="bookCard">
+          <label class="cover"><input type="file" accept="image/*"><span>표지 이미지<br>클릭해서 변경</span><img alt=""></label>
+          <h3 class="editable" contenteditable="true">구간 제목 02</h3>
+          <p class="editable" contenteditable="true">A5 · 00P · R18</p>
+          <strong class="editable" contenteditable="true">10,000원</strong>
+          <small class="editable" contenteditable="true">재고 소량 / 행사 판매</small>
+        </article>
       </div>
     </div>
   </section>
 
   <section class="goods">
-    <div class="sectionTitle"><b>GOODS</b><span>굿즈존</span></div>
-    <div class="goodsGrid">
-      <article class="good"><label class="goodImg"><input type="file" accept="image/*"><span>IMAGE</span><img></label><h3 contenteditable="true">아크릴 스탠드</h3><strong contenteditable="true">7,000원</strong></article>
-      <article class="good"><label class="goodImg"><input type="file" accept="image/*"><span>IMAGE</span><img></label><h3 contenteditable="true">포토카드 세트</h3><strong contenteditable="true">5,000원</strong></article>
-      <article class="good"><label class="goodImg round"><input type="file" accept="image/*"><span>IMAGE</span><img></label><h3 contenteditable="true">키링</h3><strong contenteditable="true">6,000원</strong></article>
-      <article class="good"><label class="goodImg"><input type="file" accept="image/*"><span>IMAGE</span><img></label><h3 contenteditable="true">스티커 세트</h3><strong contenteditable="true">4,000원</strong></article>
+    <div class="goodsHead">
+      <div class="sectionTitle"><b class="editable" contenteditable="true">GOODS</b><span class="editable" contenteditable="true">굿즈존</span></div>
+      <button type="button" id="addGoodBtn" class="editorOnly addGood">＋ 굿즈 추가</button>
     </div>
+    <div class="goodsGrid" id="goodsGrid"></div>
   </section>
 
   <footer>
-    <div><b>NOTICE</b><p contenteditable="true">현금 및 계좌이체 가능합니다. · 교환은 행사 당일 부스에서 부탁드립니다.</p></div>
-    <div><b>SNS</b><p contenteditable="true">X @ojikoun_</p></div>
+    <b class="editable" contenteditable="true">NOTICE</b>
+    <p class="editable" contenteditable="true">현금 및 계좌이체 가능합니다. · 교환은 행사 당일 부스에서 부탁드립니다.</p>
   </footer>
 </main>
+
+<template id="goodTemplate">
+  <article class="good">
+    <button type="button" class="deleteGood editorOnly" title="굿즈 삭제">×</button>
+    <label class="goodImg">
+      <input type="file" accept="image/*">
+      <span>IMAGE<br>클릭해서 변경</span>
+      <img alt="">
+    </label>
+    <h3 class="editable" contenteditable="true">굿즈 이름</h3>
+    <strong class="editable" contenteditable="true">0,000원</strong>
+  </article>
+</template>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="script.js"></script>
-</body></html>
+</body>
+</html>
